@@ -2,7 +2,7 @@ import { allBlogs } from "../data/allBlogs.js";
 
 const main = document.querySelector('main')
 
-allBlogs.slice(0, 7).forEach((blog, index) => {
+allBlogs.forEach((blog, index) => {
 
     const blog_container = document.createElement('div')
     blog_container.key = index
@@ -39,4 +39,11 @@ allBlogs.slice(0, 7).forEach((blog, index) => {
     blog_container.appendChild(btn_container)
     main.appendChild(blog_container)
 })
+
+
+const addBlog = document.createElement('a')
+addBlog.className = 'addBlog'
+addBlog.href = 'addBlog.html'
+addBlog.innerText = 'Add Blog'
+main.appendChild(addBlog)
 
