@@ -1,10 +1,34 @@
-import { allBlogs } from "../data/allBlogs.js"
+// import { allBlogs } from "../data/allBlogs.js"
+const uri = 'https://hiit-blog-api.onrender.com'     // the server url
 
-const first_name = 'Uche'
-const last_name = 'Chris'
-const email = 'uche@gmail.com'
+const token = window.localStorage.getItem('token')
 
-const blogs = allBlogs.filter(blog => blog.authur === first_name)
+async function getProfile() {
+    const response = await fetch(`${uri}/user/`, {
+        headers: {
+            // the authorization token is sent to the server to authenticate the user. See requireAuth.js in the server folder on how to get the token
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    const data = await response.json();
+    return data
+}
+
+async function getBlogs() {
+    const response = await fetch(`${uri}/user/blogs`, {
+        headers: {
+            // the authorization token is sent to the server to authenticate the user. See requireAuth.js in the server folder on how to get the token
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    const data = await response.json();
+    return data
+}
+
+
+const user = await getProfile()
+const blogs = await getBlogs()
+console.log(blogs)
 
 
 const main = document.querySelector('main')
@@ -15,12 +39,12 @@ main.appendChild(profile)
 
 const welcomeMsg = document.createElement('h2')
 welcomeMsg.className = 'welcome'
-welcomeMsg.innerText = `Hi, ${first_name}`
+welcomeMsg.innerText = `Hi, ${user.first_name}`
 profile.appendChild(welcomeMsg)
 
 const userEmail = document.createElement('p')
 userEmail.className = 'userEmail'
-userEmail.innerText = email
+userEmail.innerText = user.email
 profile.appendChild(userEmail)
 
 const editProfileBtn = document.createElement('button')
@@ -31,7 +55,6 @@ profile.appendChild(editProfileBtn)
 
 editProfileBtn.addEventListener('click', () => {
     editProfilePopup()
-    // cover.classList.remove('hide')
 })
 
 
@@ -92,7 +115,7 @@ const editProfilePopup = () => {
     const firstNameInput = document.createElement('input')
     firstNameInput.type = 'text'
     firstNameInput.className = 'firstNameInput'
-    firstNameInput.setAttribute('value', first_name)
+    firstNameInput.setAttribute('value', user.first_name)
     profileForm.appendChild(firstNameInput)
 
     const lastNameLabel = document.createElement('label')
@@ -103,7 +126,7 @@ const editProfilePopup = () => {
     const lastNameInput = document.createElement('input')
     lastNameInput.type = 'text'
     lastNameInput.className = 'lastNameInput'
-    lastNameInput.setAttribute('value', last_name)
+    lastNameInput.setAttribute('value', user.last_name)
     profileForm.appendChild(lastNameInput)
 
 
@@ -115,7 +138,7 @@ const editProfilePopup = () => {
     const emailInput = document.createElement('input')
     emailInput.type = 'email'
     emailInput.className = 'emailInput'
-    emailInput.setAttribute('value', email)
+    emailInput.setAttribute('value', user.email)
     profileForm.appendChild(emailInput)
 
     const passwordLabel = document.createElement('label')
@@ -171,8 +194,6 @@ const editProfilePopup = () => {
 const blogPopup = (id) => {
     // blog
 
-    // blogCover.classList.remove('hide')
-
     let [currentBlog] = blogs.filter(blog => blog.id === id)
     console.log(currentBlog)
 
@@ -224,15 +245,46 @@ const blogPopup = (id) => {
     })
     blogBtnContainer.appendChild(blogConfirmBtn)
 
+    const currentBlogContainer = document.createElement('div')
+    currentBlogContainer.className = 'currentBlogContainer'
+    blogContainer.appendChild(currentBlogContainer)
+
+    const blogContent = document.createElement('div')
+    blogContent.className = 'blogContent'
+    currentBlogContainer.appendChild(blogContent)
+
     const blogTitle = document.createElement('p')
     blogTitle.className = 'blogTitle'
     blogTitle.innerText = 'Title: ' + currentBlog.title
-    blogContainer.appendChild(blogTitle)
+    blogContent.appendChild(blogTitle)
 
     const blogContentContainer = document.createElement('div')
     blogContentContainer.className = 'blogContentContainer'
     blogContentContainer.innerHTML = `<p> ${currentBlog.body} </p>`
-    blogContainer.appendChild(blogContentContainer)
+    blogContent.appendChild(blogContentContainer)
+
+    const blogComments = document.createElement('div')
+    blogComments.className = 'blogComments'
+    currentBlogContainer.appendChild(blogComments)
+
+    if (currentBlog.comments.length === 0) blogComments.className = 'blogComments hide'
+
+    currentBlog.comments.forEach(comment => {
+        const eachComments = document.createElement('div')
+        eachComments.className = 'eachComments'
+
+        const name = document.createElement('h3')
+        name.className = 'name'
+        name.innerText = comment.name
+        eachComments.appendChild(name)
+
+        const body = document.createElement('p')
+        body.className = 'body'
+        body.innerText = comment.comment
+        eachComments.appendChild(body)
+
+        blogComments.appendChild(eachComments)
+    })
 }
 
 const addBlog = document.createElement('a')

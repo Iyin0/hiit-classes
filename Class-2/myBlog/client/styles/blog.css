@@ -63,17 +63,21 @@ h2 {
     margin-bottom: 30px;
     width: 100%;
     border-bottom: 1px solid #828283;
-
 }
 
 .eachComments h3 {
     margin: 0;
     font-size: 16px;
-
 }
 
 .eachComments p {
     margin: 5px 0px 10px;
+}
+
+.commentError {
+    margin: 10px 0px 5px;
+    color: red;
+    font-size: 14px;
 }
 
 .addComment {

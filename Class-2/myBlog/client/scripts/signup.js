@@ -5,28 +5,32 @@ const details = document.querySelectorAll('input')
 const btn = document.querySelector('.submit')
 const msg = document.querySelector('.message')
 
-
 btn.addEventListener('click', (e) => {
     e.preventDefault()
     msg.innerText = ''
 
-    if (!details[0].value || !details[1].value) {
+    if (!details[0].value || !details[1].value || !details[2].value || !details[3].value || !details[4].value) {
         msg.innerText = 'All fields must be filled'
+    }
+    else if (details[3].value !== details[4].value) {
+        msg.innerText = "Password and Confirm Password doesn't match"
     }
     else {
         let user = {
-            email: details[0].value,
-            password: details[1].value
+            first_name: details[0].value,
+            last_name: details[1].value,
+            email: details[2].value,
+            password: details[3].value
         }
 
-        loginUser(user)
+        createAccount(user)
     }
 
 })
 
-async function loginUser(data) {
+async function createAccount(data) {
     try {
-        const response = await fetch(`${uri}/accounts/auth/login`, {
+        const response = await fetch(`${uri}/accounts/auth/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -35,9 +39,10 @@ async function loginUser(data) {
         });
 
         const result = await response.json();
-        window.localStorage.setItem('token', result.token)  // the authorixation token is saved to the local storage so that it can be sent to the server for authentication. See header.js line 8
         if (result.error) msg.innerText = result.error
-        if (response.status === 200) window.location.href = 'index.html'
+
+        if (response.status === 200) window.location.href = 'login.html'
+
         console.log(result);
     } catch (error) {
         msg.innerText = error.error
