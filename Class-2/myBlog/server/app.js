@@ -26,7 +26,7 @@ app.use(bodyParser.json())      // used to identify the body of a request
 
 app.use(
     cors({
-        origin: ["http://127.0.0.1:5500", "https://hiit-blog-api.onrender.com"],
+        origin: ["http://127.0.0.1:5500", "https://hiit-blog.onrender.com"],
         credentials: true,
     })
 )
