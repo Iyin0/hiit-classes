@@ -63,6 +63,7 @@ header button p {
     top: 90px;
     transition: 0.5s ease;
     z-index: 1;
+    border-radius: 5px;
 }
 
 .dropdown-false {
@@ -96,4 +97,27 @@ header button p {
 
 main {
     min-height: calc(100vh - 120px);
+}
+
+@media screen and (max-width: 576px) {
+
+    header {
+        padding: 8px 16px;
+        height: 80px;
+    }
+
+    header h1,
+    header a {
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    .dropdown {
+        right: 6px;
+        top: 70px;
+    }
+
+    main {
+        min-height: calc(100vh - 80px);
+    }
 }

@@ -43,7 +43,8 @@ blog_container.appendChild(blog_body)
 // Comment section 
 
 // Establish a WebSocket connection
-const socket = new WebSocket("ws://localhost:5000");
+// const socket = new WebSocket("ws://localhost:5000");
+const socket = new WebSocket("ws://hiit-blog-api.onrender.com");
 
 // Connection opened
 socket.addEventListener('open', event => {
