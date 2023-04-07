@@ -49,7 +49,7 @@ class Blogs {
                     LEFT JOIN comments comment ON blog.id = comment.blog_id
                     LEFT JOIN accounts author_comment ON comment.user_id = author_comment.id
                     WHERE blog.id = '${id}'
-                    ORDER BY comment.created_at DESC
+                    ORDER BY comment.created_at ASC
         `
 
         const [blog] = await db.execute(sql)
