@@ -52,7 +52,7 @@ class Accounts {
 
         if (!match) throw Error('Incorrect password')
 
-        return user.id
+        return { id: user.id, first_name: user.first_name }
 
 
     }

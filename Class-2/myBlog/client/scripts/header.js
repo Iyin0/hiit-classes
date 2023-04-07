@@ -1,20 +1,5 @@
-const uri = 'https://hiit-blog-api.onrender.com'     // the server url
-
 const token = window.localStorage.getItem('token')
-
-async function getName() {
-    const response = await fetch(`${uri}/user/name`, {
-        headers: {
-            // the authorization token is sent to the server to authenticate the user. See requireAuth.js in the server folder on how to get the token
-            'Authorization': `Bearer ${token}`
-        }
-    });
-    const data = await response.json();
-    window.localStorage.setItem('name', data.first_name)
-    return data.first_name
-}
-
-const userName = await getName()
+const userName = window.localStorage.getItem('name')
 
 
 const user = userName ? userName : 'Anon'
@@ -46,6 +31,7 @@ const logout = document.createElement('a')
 logout.setAttribute('href', 'login.html')
 logout.addEventListener('click', () => {
     window.localStorage.removeItem('token')
+    window.localStorage.removeItem('name')
 })
 logout.innerText = 'Logout'
 
