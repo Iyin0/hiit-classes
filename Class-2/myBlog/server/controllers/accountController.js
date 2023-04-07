@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
     try {
         const user_id = await Accounts.login(email, password)
         const token = createToken(user_id)
-        req.session.token = token
+        // req.session.token = token
         res.status(200).json({ user_id, token, message: 'User logged in' })
     } catch (error) {
         res.status(400).json({ error: error.message })

@@ -1,4 +1,16 @@
-import { allBlogs } from "../data/allBlogs.js";
+// import { allBlogs } from "../data/allBlogs.js";
+
+const uri = 'https://hiit-blog-api.onrender.com'     // the server url
+
+const token = window.localStorage.getItem('token')
+
+async function getAllBlogs() {
+    const response = await fetch(`${uri}/blogs/`);
+    const data = await response.json();
+    return data
+}
+
+const allBlogs = await getAllBlogs()
 
 const main = document.querySelector('main')
 
@@ -12,9 +24,9 @@ allBlogs.forEach((blog, index) => {
     blog_title.setAttribute('class', 'blog-title')
     blog_title.innerText = blog.title
 
-    const blog_authur = document.createElement('p')
-    blog_authur.setAttribute('class', 'blog-authur')
-    blog_authur.innerText = `by: ${blog.authur}`
+    const blog_author = document.createElement('p')
+    blog_author.setAttribute('class', 'blog-authur')
+    blog_author.innerText = `by: ${blog.author}`
 
     const blog_body = document.createElement('p')
     blog_body.setAttribute('class', 'blog-body')
@@ -34,16 +46,18 @@ allBlogs.forEach((blog, index) => {
 
 
     blog_container.appendChild(blog_title)
-    blog_container.appendChild(blog_authur)
+    blog_container.appendChild(blog_author)
     blog_container.appendChild(blog_body)
     blog_container.appendChild(btn_container)
     main.appendChild(blog_container)
 })
 
 
-const addBlog = document.createElement('a')
-addBlog.className = 'addBlog'
-addBlog.href = 'addBlog.html'
-addBlog.innerText = 'Add Blog'
-main.appendChild(addBlog)
+if (token) {    // ensures only authenticated users can add a new blog
+    const addBlog = document.createElement('a')
+    addBlog.className = 'addBlog'
+    addBlog.href = 'addBlog.html'
+    addBlog.innerText = 'Add Blog'
+    main.appendChild(addBlog)
+}
 

@@ -50,6 +50,7 @@ main {
     flex-direction: column;
     margin-bottom: 30px;
     padding: 16px;
+    width: 70%;
 }
 
 .blog-container h4 {
@@ -193,6 +194,16 @@ main {
     background-color: green;
 }
 
+.currentBlogContainer {
+    display: flex;
+}
+
+.blogContent {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
 .blogTitle {
     font-size: 24px;
     font-weight: 600;
@@ -212,6 +223,46 @@ main {
     font-size: 18px;
     line-height: 28px;
     text-align: justify;
+}
+
+.blogComments {
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+    min-height: 100%;
+    overflow-y: scroll;
+    margin: 30px 0px 10px 10px;
+    min-height: 100%;
+    box-shadow: 2px 5px 28px -4px rgba(128, 128, 128, 0.75);
+    -webkit-box-shadow: 2px 5px 28px -4px rgba(128, 128, 128, 0.75);
+    -moz-box-shadow: 2px 5px 28px -4px rgba(128, 128, 128, 0.75);
+    padding: 16px;
+}
+
+.blogComments::-webkit-scrollbar {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+.eachComments {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    width: 100%;
+    border-bottom: 1px solid #828283;
+}
+
+.eachComments h3 {
+    margin: 0;
+    font-size: 16px;
+
+}
+
+.eachComments p {
+    margin: 5px 0px 10px;
 }
 
 .addBlog {

@@ -1,4 +1,23 @@
-const user = 'James'
+const uri = 'https://hiit-blog-api.onrender.com'     // the server url
+
+const token = window.localStorage.getItem('token')
+
+async function getName() {
+    const response = await fetch(`${uri}/user/name`, {
+        headers: {
+            // the authorization token is sent to the server to authenticate the user. See requireAuth.js in the server folder on how to get the token
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    const data = await response.json();
+    window.localStorage.setItem('name', data.first_name)
+    return data.first_name
+}
+
+const userName = await getName()
+
+
+const user = userName ? userName : 'Anon'
 let dropdownState = false
 
 const header = document.querySelector('header')
@@ -23,6 +42,13 @@ const profile = document.createElement('a')
 profile.setAttribute('href', 'profile.html')
 profile.innerText = 'Profile'
 
+const logout = document.createElement('a')
+logout.setAttribute('href', 'login.html')
+logout.addEventListener('click', () => {
+    window.localStorage.removeItem('token')
+})
+logout.innerText = 'Logout'
+
 const login = document.createElement('a')
 login.setAttribute('href', 'login.html')
 login.innerText = 'Login'
@@ -31,9 +57,16 @@ const signup = document.createElement('a')
 signup.setAttribute('href', 'signup.html')
 signup.innerText = 'Sign Up'
 
-dropdown.appendChild(login)
-dropdown.appendChild(signup)
-dropdown.appendChild(profile)
+if (token) {
+    dropdown.appendChild(profile)
+    dropdown.appendChild(logout)
+}
+else {
+    dropdown.appendChild(login)
+    dropdown.appendChild(signup)
+}
+
+
 header.appendChild(dropdown)
 
 
