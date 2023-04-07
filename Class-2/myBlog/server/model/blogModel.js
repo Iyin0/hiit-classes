@@ -11,6 +11,7 @@ class Blogs {
 
         const id = uuid.v4()
         const created_at = await timestamp()
+        title = title.split("'").join("''")
         body = body.split("'").join("''")
 
         let sql = `INSERT INTO blogs (id, user_id, title, body, created_at)
