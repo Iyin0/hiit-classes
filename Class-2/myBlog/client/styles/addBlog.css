@@ -38,7 +38,7 @@ textarea {
     outline: none;
 }
 
-button {
+form button {
     margin-top: 20px;
     height: 40px;
     width: 50%;

@@ -11,6 +11,7 @@ class Blogs {
 
         const id = uuid.v4()
         const created_at = await timestamp()
+        body = body.split("'").join("''")
 
         let sql = `INSERT INTO blogs (id, user_id, title, body, created_at)
                     VALUES('${id}', '${user_id}', '${title}', '${body}', '${created_at}')`
@@ -47,7 +48,7 @@ class Blogs {
                     LEFT JOIN comments comment ON blog.id = comment.blog_id
                     LEFT JOIN accounts author_comment ON comment.user_id = author_comment.id
                     WHERE blog.id = '${id}'
-                    ORDER BY MAX(comment.created_at) DESC
+                    ORDER BY comment.created_at DESC
         `
 
         const [blog] = await db.execute(sql)
@@ -60,22 +61,13 @@ class Blogs {
         if (!blog_id || !user_id || !body) throw Error('All fields must be filled')
         const id = uuid.v4()
         const created_at = await timestamp()
+        body = body.split("'").join("''")
 
         let sql = `INSERT INTO comments (id, user_id, blog_id, comment, created_at) 
                     VALUES('${id}', '${user_id}', '${blog_id}', '${body}', '${created_at}')`
 
         await db.execute(sql)
     }
-
-    // static async showComment(blog_id) {
-    //     let sql = `SELECT * FROM blogs WHERE id='${id}' `
-
-    //     const [blog] = await db.execute(sql)
-
-    //     return blog[0]
-    // }
-
-
 
 }
 

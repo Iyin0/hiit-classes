@@ -1,4 +1,5 @@
 const uri = 'https://hiit-blog-api.onrender.com'     // the server url
+// const uri = 'http://127.0.0.1:5000'     // the server url
 
 
 async function postBlog(title, body) {
