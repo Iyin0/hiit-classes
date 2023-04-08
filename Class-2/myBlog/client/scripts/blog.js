@@ -14,10 +14,19 @@ let params = new URLSearchParams(window.location.search);
 let blogId = params.get('blogId');
 
 const blog = await getBlog(blogId)
-console.log(blog)
+// console.log(blog)
 // const [blog] = allBlogs.filter(blog => blog.id === blogId)
 
 let allComments = blog.comments
+
+// To sort the comments from earliest to latest
+allComments.sort(sortByDatePosted)
+
+function sortByDatePosted(a, b) {
+    return new Date(a.date_posted) - new Date(b.date_posted);
+}
+
+// console.log(allComments)
 
 const main = document.querySelector('main')
 
