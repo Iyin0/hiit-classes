@@ -1,0 +1,25 @@
+header {
+    width: 100vw;
+    background-color: rgb(178, 193, 193);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    height: 120px;
+}
+
+.app-name {
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 700;
+}
+
+header button {
+    padding: 16px 32px;
+    border-radius: 16px;
+    border: none;
+    font-size: 16px;
+}
