@@ -20,7 +20,12 @@ header {
     padding: 0px 24px;
     width: 100%;
     height: 120px;
+    position: relative;
 
+}
+
+.menu {
+    display: none;
 }
 
 h1 {
@@ -84,4 +89,53 @@ nav ul a {
 
 .profile:hover {
     transform: scale(1.2);
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        background-color: blue;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    header {
+        background-color: #000000;
+        padding: 0px 16px 0px 32px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        left: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+        width: 150px;
+        margin: 0;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .profile {
+        width: 120px;
+    }
+
+    .profile img {
+        width: 30px;
+        height: 30px;
+    }
+
+
 }
