@@ -91,7 +91,6 @@ let students = ["Simon", "Ikenna", "Ahmed", "Promise", "Maxwell", "Daniel", "Dom
 //         console.log("You failed")
 // }
 
-
 let scores = []
 
 for (let i = 0; i < 20; i++) {
