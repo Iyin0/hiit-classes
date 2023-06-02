@@ -1,65 +1,4 @@
-const allProducts = [
-    {
-        id: 1,
-        name: 'AC',
-        description: 'For Cooling',
-        price: '200'
-    },
-    {
-        id: 2,
-        name: 'Washing Machine',
-        description: 'For dry cleaning clothes and beddings',
-        price: '500'
-    },
-    {
-        id: 3,
-        name: 'Screen',
-        description: 'For viewing content',
-        price: '300'
-    },
-    {
-        id: 4,
-        name: '	Keyboard',
-        description: 'Typing',
-        price: '50'
-    },
-    {
-        id: 5,
-        name: 'Phone',
-        description: 'Making Calls',
-        price: '1150'
-    },
-    {
-        id: 6,
-        name: 'Marker',
-        description: 'Writing',
-        price: '50'
-    },
-    {
-        id: 7,
-        name: 'Table',
-        description: 'Placing items',
-        price: '50'
-    },
-    {
-        id: 8,
-        name: 'Chair',
-        description: 'Sitting',
-        price: '5'
-    },
-    {
-        id: 9,
-        name: 'Cap',
-        description: '	For providing shade',
-        price: '2'
-    },
-    {
-        id: 10,
-        name: 'Electricity',
-        description: '	For providing power',
-        price: '500'
-    },
-]
+import { allProducts } from "./allProducts.js"
 
 // dropdown
 const profile_btn = document.querySelector('.profile')
@@ -81,6 +20,8 @@ profile_btn.addEventListener('click', () => {
 
 })
 
+let products = allProducts
+
 // table
 const main = document.querySelector('main')
 const table = document.createElement('table')
@@ -100,30 +41,130 @@ headers.forEach(element => {
     tableHeaderRow.appendChild(tableHeader)
 })
 
-allProducts.forEach((element, index) => {
-    let tableRow = document.createElement('tr')
 
-    let td1 = document.createElement('td')
-    td1.innerText = index + 1
-    tableRow.appendChild(td1)
+const createTableList = () => {
 
-    let td2 = document.createElement('td')
-    td2.innerText = element.name
-    tableRow.appendChild(td2)
+    products.forEach((element, index) => {
+        let tableRow = document.createElement('tr')
+        tableRow.className = 'row'
 
-    let td3 = document.createElement('td')
-    td3.innerText = element.description
-    tableRow.appendChild(td3)
+        let td1 = document.createElement('td')
+        td1.innerText = index + 1
+        tableRow.appendChild(td1)
 
-    let td4 = document.createElement('td')
-    td4.innerText = element.price
-    tableRow.appendChild(td4)
+        let td2 = document.createElement('td')
+        td2.innerText = element.name
+        tableRow.appendChild(td2)
 
-    table.appendChild(tableRow)
-})
+        let td3 = document.createElement('td')
+        td3.innerText = element.description
+        tableRow.appendChild(td3)
+
+        let td4 = document.createElement('td')
+        td4.innerText = element.price
+        tableRow.appendChild(td4)
+
+        let td5 = document.createElement('button')
+        td5.innerText = 'Delete'
+
+        td5.addEventListener('click', () => {
+            removeProduct(element.id)
+        })
+
+        tableRow.appendChild(td5)
+
+        table.appendChild(tableRow)
+    })
+}
+
+const removeProduct = (id) => {
+    products = products.filter(product => product.id !== id)
+    removeTableRows()
+    createTableList()
+}
+
+createTableList()
+
+
 
 // form
+const form = document.createElement('form')
+
+// item
+const itemLabel = document.createElement('label')
+itemLabel.innerText = 'Item name'
+
+const itemInput = document.createElement('input')
+itemInput.setAttribute('type', 'text')
+
+const itemContainer = document.createElement('div')
+itemContainer.appendChild(itemLabel)
+itemContainer.appendChild(itemInput)
+form.appendChild(itemContainer)
+
+// description
+const descriptionLabel = document.createElement('label')
+descriptionLabel.innerText = 'Description'
+
+const descriptionInput = document.createElement('textarea')
+
+const descriptionContainer = document.createElement('div')
+descriptionContainer.appendChild(descriptionLabel)
+descriptionContainer.appendChild(descriptionInput)
+form.appendChild(descriptionContainer)
+
+// Price
+const priceLabel = document.createElement('label')
+priceLabel.innerText = 'Price'
+form.appendChild(priceLabel)
+
+const priceInput = document.createElement('input')
+priceInput.setAttribute('type', 'number')
+form.appendChild(priceInput)
+
+const priceContainer = document.createElement('div')
+priceContainer.appendChild(priceLabel)
+priceContainer.appendChild(priceInput)
+form.appendChild(priceContainer)
+
+const submitForm = document.createElement('button')
+submitForm.innerText = 'Add Item'
+form.appendChild(submitForm)
+
+const removeTableRows = () => {
+    const tableRows = document.querySelectorAll('.row')
+
+    tableRows.forEach(row => {
+        table.removeChild(row)
+    })
+}
+
+submitForm.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    if (itemInput.value && descriptionInput.value && priceInput.value) {
+        let item = {
+            id: allProducts.length + 1,
+            name: itemInput.value,
+            description: descriptionInput.value,
+            price: priceInput.value
+        }
+
+        products = [...products, item]
+        removeTableRows()
+        createTableList()
+        itemInput.value = ''
+        descriptionInput.value = ''
+        priceInput.value = ''
+    }
+    else {
+        alert('Insert all fields')
+    }
+
+})
 
 
 main.appendChild(table)
+main.appendChild(form)
 document.body.appendChild(main)
+
