@@ -1,4 +1,9 @@
-import { allProducts } from "./allProducts.js"
+// import { allProducts } from "./allProducts.js"
+import { addItem, getAllItem } from "./api.js"
+
+const { items } = await getAllItem()
+
+let products = items
 
 // dropdown
 const profile_btn = document.querySelector('.profile')
@@ -20,7 +25,7 @@ profile_btn.addEventListener('click', () => {
 
 })
 
-let products = allProducts
+// let products = allProducts
 
 // table
 const main = document.querySelector('main')
@@ -43,6 +48,8 @@ headers.forEach(element => {
 
 
 const createTableList = () => {
+
+    console.log(products)
 
     products.forEach((element, index) => {
         let tableRow = document.createElement('tr')
@@ -78,12 +85,13 @@ const createTableList = () => {
 }
 
 const removeProduct = (id) => {
-    products = products.filter(product => product.id !== id)
-    removeTableRows()
-    createTableList()
+    // products = products.filter(product => product.id !== id)
+    // removeTableRows()
+    // createTableList()
+    console.log(id)
 }
 
-createTableList()
+{ products && createTableList() }
 
 
 
@@ -139,18 +147,22 @@ const removeTableRows = () => {
     })
 }
 
-submitForm.addEventListener('click', (e) => {
+submitForm.addEventListener('click', async (e) => {
     e.preventDefault()
 
     if (itemInput.value && descriptionInput.value && priceInput.value) {
         let item = {
-            id: allProducts.length + 1,
+            // id: products.length + 1,
             name: itemInput.value,
             description: descriptionInput.value,
             price: priceInput.value
         }
 
-        products = [...products, item]
+        await addItem(item)
+
+        // products = [...products, item]
+        let { items } = await getAllItem()
+        products = items
         removeTableRows()
         createTableList()
         itemInput.value = ''
