@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    position: relative;
+}
+
+.container aside {
+    min-width: 300px;
+    width: 300px;
+    height: auto;
+    padding: 16px 8px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.container .section {
+    margin-left: 310px;
+    height: calc(100vh - 150px);
+    background-color: yellow;
+    overflow-y: scroll;
+}
