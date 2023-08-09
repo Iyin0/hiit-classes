@@ -42,7 +42,7 @@ header {
 header h1 {
     color: #fff;
     margin: 0;
-    font-size: 50px;
+    font-size: 3.125rem;
 }
 
 nav ul {
@@ -83,4 +83,53 @@ header nav a {
 
 .profile svg path {
     fill: #fff;
+}
+
+.hamburger {
+    display: none;
+}
+
+/* @media screen and (max-width: 1440px) {
+    header {
+        background-color: yellow;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        background-color: blue;
+    }
+} */
+
+@media screen and (max-width: 576px) {
+    header {
+        padding: 0px 16px;
+        height: 90px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .profile,
+    header nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 50px;
+        height: 50px;
+    }
+
+    .hamburger svg {
+        transform: scale(0.8);
+    }
+
+    .hamburger svg path {
+        fill: #fff;
+    }
 }

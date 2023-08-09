@@ -20,3 +20,13 @@
     background-color: yellow;
     overflow-y: scroll;
 }
+
+@media screen and (max-width: 576px) {
+    .container aside {
+        display: none;
+    }
+
+    .container .section {
+        margin-left: 0px;
+    }
+}

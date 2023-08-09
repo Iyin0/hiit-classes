@@ -23,7 +23,7 @@ form label {
 form input,
 form select,
 form textarea,
-button {
+form button {
     width: 100%;
     height: 40px;
     border-radius: 5px;
@@ -49,13 +49,25 @@ form textarea {
     font-family: 'Poppins', sans-serif;
 }
 
-button {
+form button {
     border: none;
     background-color: #568496;
     color: #fff;
     transition: 0.5s ease;
 }
 
-button:hover {
+form button:hover {
     background-color: #456A78;
+}
+
+@media screen and (max-width: 576px) {
+
+    main {
+        padding: 100px 16px;
+    }
+
+    form {
+        width: 100%;
+        padding: 16px 16px;
+    }
 }
