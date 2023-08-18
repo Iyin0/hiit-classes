@@ -99,8 +99,8 @@ let fullName = firstName + ' ' + lastName
 // console.log(fullName.split(' '))
 // console.log(fullName.slice(0, 5))
 
-let lowerName = fullName.toLowerCase()
-console.log(lowerName)
+// let lowerName = fullName.toLowerCase()
+// console.log(lowerName)
 
 // let lowercase = lowerName.toUpperCase()[0, 7]
 
@@ -112,12 +112,65 @@ console.log(lowerName)
 // let lowercase3 = lowercase2.toUpperCase()
 // console.log(lowercase3)
 
-let lowerNames = lowerName.split(' ')
+// let lowerNames = lowerName.split(' ')
 
-console.log(lowerNames)
-console.log(lowerNames[0])
-console.log(lowerNames[0][0])
-console.log(lowerNames[0][0].toUpperCase())
-console.log(lowerNames[0].slice(1))
+// console.log(lowerNames)
+// console.log(lowerNames[0])
+// console.log(lowerNames[0][0])
+// console.log(lowerNames[0][0].toUpperCase())
+// console.log(lowerNames[0].slice(1))
 
-console.log(lowerNames[0][0].toUpperCase() + lowerNames[0].slice(1) + ' ' + lowerNames[1][0].toUpperCase() + lowerNames[1].slice(1))
+// console.log(lowerNames[0][0].toUpperCase() + lowerNames[0].slice(1) + ' ' + lowerNames[1][0].toUpperCase() + lowerNames[1].slice(1))
+
+
+// ARRAY
+let students = ['Bello', 'Tega', 'Aisha', 'Emmanuel', 50, 100, true]
+
+// console.log(students)
+// console.log(students.length)
+// console.log(students[3])
+// console.log(students.indexOf(true))
+
+students[4] = "Eneh"
+// console.log(students)
+
+students[students.indexOf(100)] = 'Omoniyi'
+// console.log(students)
+
+students.pop()
+// console.log(students)
+
+students.push("Deborah")
+// students.push(true)
+// students.push(false)
+students.push("Uzowulu")
+// students.push(5)
+// console.log(students)
+
+students.sort()
+// console.log(students)
+
+const scores = [50, 70, 90, 5, 7]
+// console.log(scores)
+
+// const allData = students.concat(scores)
+const allData = [...students, 'Love', ...scores]
+// console.log(allData)
+
+// console.log(fullName.split(' ').join('-'))
+
+// console.log(allData.join('-'))
+
+
+// BOOLEAN
+console.log(10 > 2)     // true
+console.log(10 < 2)     // false
+console.log(10 <= 2)       // false
+console.log(10 <= 10)       // true
+console.log(10 <= '10')     // true, false
+console.log(10 >= 2)        // true
+console.log(10 == 2)        // false
+console.log(10 == '10')     // true
+console.log(10 === '10')    // false, true
+console.log(10 !== '10')    // false
+console.log(10 != '10')     // false
