@@ -1,7 +1,7 @@
 // MAKE SURE TO INSTALL NODE.JS. VISIT https://nodejs.org/en TO DOWNLOAD AND INSTALL
 
 const os = require('os')
-const data = require('./data.js')
+const data = require('./data')
 
 
 // console.log('Welcome to Node.JS class today')
@@ -16,6 +16,9 @@ const greeting = (name) => {
 
 // greeting('Samuel')
 
+// const users = ['Uzo', 'Ayo', 'Emeka', 'Ola']
+
+// const age = [28, 17, 33, 25]
 // console.log(users)
 // console.log(age)
 
