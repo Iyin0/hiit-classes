@@ -147,25 +147,28 @@ submit.addEventListener('click', async (e) => {
                     },
                     body: JSON.stringify({ body: input.value })
                 });
-                await response.json();
+
+                const json = await response.json();
+
+                if (response.ok) {
+
+                    // Submit a new comment
+                    const name = window.localStorage.getItem('name')
+                    const comment = input.value;
+
+                    // Send the comment to the server
+                    const newComment = { name, comment };
+                    socket.send(JSON.stringify(newComment));
+
+                    input.value = ''
+                    comments.innerHTML = ''
+                    displayComments()
+                }
 
             }
 
             await postComment()
-
-            // Submit a new comment
-            const name = window.localStorage.getItem('name')
-            const comment = input.value;
-
-            // Send the comment to the server
-            const newComment = { name, comment };
-            socket.send(JSON.stringify(newComment));
-
-            input.value = ''
-            comments.innerHTML = ''
-            displayComments()
         }
-
 
     }
 })
