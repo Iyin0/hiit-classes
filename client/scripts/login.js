@@ -35,11 +35,17 @@ async function loginUser(data) {
         });
 
         const result = await response.json();
-        window.localStorage.setItem('token', result.token)  // the authorixation token is saved to the local storage so that it can be sent to the server for authentication. See header.js line 8
-        window.localStorage.setItem('name', result.user.first_name)  // the authorixation token is saved to the local storage so that it can be sent to the server for authentication. See header.js line 8
-        if (result.error) msg.innerText = result.error
-        if (response.status === 200) window.location.href = 'index.html'
+
         console.log(result);
+
+        if (response.status === 200) {
+            window.localStorage.setItem('token', result.token)  // the authorixation token is saved to the local storage so that it can be sent to the server for authentication. See header.js line 8
+            window.localStorage.setItem('name', result.user.first_name)  // the authorixation token is saved to the local storage so that it can be sent to the server for authentication. See header.js line 8
+            window.location.href = 'index.html'
+        }
+
+        if (result.error) msg.innerText = result.error
+
     } catch (error) {
         msg.innerText = error.error
         console.error(error);
