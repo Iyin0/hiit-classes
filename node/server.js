@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
     switch (req.url) {
         case '/':
             res.write('Homepage')
-            res.statusCode(200)
+            // res.statusCode(200)
             res.end();
             break
         case '/about':
@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
             break
         default:
             res.write('404 page')
-            res.writeHead(400)
+            // res.writeHead(400)
             res.end();
     }
 })
