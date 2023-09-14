@@ -58,3 +58,7 @@ header li a {
     border-radius: 50%;
     margin-right: 5px;
 }
+
+main {
+    height: calc(100vh - 100px);
+}
