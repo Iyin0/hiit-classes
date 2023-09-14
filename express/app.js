@@ -24,15 +24,15 @@ app.post('/postComment', (req, res) => {
 
     try {
 
-        console.log(name)
-        console.log(id)
-        console.log(comment)
+        // console.log(name)
+        // console.log(id)
+        // console.log(comment)
 
         if (!name) throw Error('Name must be included')
         if (!id) throw Error('id must be included')
         if (!comment) throw Error('comment must be included')
 
-        res.status(200).json({ message: 'Comment posted successfully' })
+        res.status(200).json({ message: 'Comment posted successfully', data: { name, id, comment } })
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
