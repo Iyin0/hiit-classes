@@ -17,6 +17,8 @@ header {
     justify-content: space-between;
     color: white;
     padding: 20px;
+    position: sticky;
+    top: 0;
 }
 
 header h1 {
@@ -59,6 +61,52 @@ header li a {
     margin-right: 5px;
 }
 
+.profile svg path {
+    fill: #fff;
+}
+
 main {
     min-height: calc(100vh - 100px);
+}
+
+.hamburger {
+    display: none;
+}
+
+/* 
+@media screen and (max-width: 1440px) {
+    header {
+        background-color: aqua;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        background-color: yellow;
+    }
+} */
+
+@media screen and (max-width: 576px) {
+
+    header {
+        padding: 8px 16px;
+    }
+
+    header nav,
+    header .profile {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger svg path {
+        fill: #fff;
+    }
+
 }
