@@ -1,14 +1,17 @@
-console.log('Welcome to class')
+const os = require('os')
+const data = require('./data')
+
+// console.log('Welcome to class')
 
 const greeting = (name) => {
     console.log(`Welcome ${name}`)
 }
 
-greeting('James')
+// greeting('James')
+// console.log(os)
 
-const users = ['James', 'Nonye', 'Okiki', "Daniel", 'Theresa']
+const { users, age, email } = data
 
-const age = [29, 27, 30, 15, 12]
-
+// console.log(data)
 console.log(users)
 console.log(age)
