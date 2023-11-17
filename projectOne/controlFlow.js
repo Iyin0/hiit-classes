@@ -63,7 +63,7 @@ console.log(students)
 // }
 
 
-// let scores = []
+let scores = []
 
 for (let i = 0; i < 20; i++) {
     scores[i] = Math.floor(Math.random() * 100)
