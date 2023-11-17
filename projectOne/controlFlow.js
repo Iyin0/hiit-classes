@@ -29,19 +29,19 @@ console.log(students)
 
 // if...else
 
-let score = window.prompt('Enter a score')
+// let score = window.prompt('Enter a score')
 
-if (score >= 70) {
-    console.log('You passed')
-} else if (score >= 60) {
-    console.log('You did your best')
-} else if (score >= 50) {
-    console.log('You can do better')
-} else if (score >= 45) {
-    console.log('At least you tried')
-} else {
-    console.log('You failed')
-}
+// if (score >= 70) {
+//     console.log('You passed')
+// } else if (score >= 60) {
+//     console.log('You did your best')
+// } else if (score >= 50) {
+//     console.log('You can do better')
+// } else if (score >= 45) {
+//     console.log('At least you tried')
+// } else {
+//     console.log('You failed')
+// }
 
 // Switch
 // const username = prompt('Enter Grade')
