@@ -90,10 +90,17 @@ allProducts.forEach((row, index) => {
     const tbodyRow = document.createElement('tr')
     tbody.appendChild(tbodyRow)
 
-    Object.keys(row).forEach((tableData, i) => {
+    Object.keys(row).forEach((tableData) => {
         const td = document.createElement('td')
-        if (i == 0) td.innerText = index + 1
+
+        // if (tableData === 'id') td.innerText = index + 1
+        // else if (tableData === 'name') td.innerText = row.name
+        // else if (tableData === 'description') td.innerText = row.description
+        // else if (tableData === 'price') td.innerText = row.price
+
+        if (tableData === 'id') td.innerText = index + 1
         else td.innerText = row[tableData]
+
         tbodyRow.appendChild(td)
 
         // console.log(row["id"])
