@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    /* margin: 0; */
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+main .second {
+    color: yellow;
+    width: 500px;
+    height: 200px;
+    border: 1px solid red;
+    padding: 20px;
+}
+
+input[type="text"] {
+    height: 30px;
+    width: 100%;
+    max-width: 500px;
+    padding: 8px;
+    border: 1px solid green;
+    border-radius: 5px;
+    outline: none;
+}
