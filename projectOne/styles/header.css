@@ -80,3 +80,30 @@ div button {
 div svg {
     fill: #fff;
 }
+
+@media screen and (max-width: 900px) {
+    header {
+        background-color: green;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    header {
+        background-color: #ac3b3b;
+        padding: 8px;
+        height: 70px;
+    }
+
+    .store-name {
+        font-size: 24px;
+    }
+
+    ul {
+        display: none;
+    }
+
+    div img {
+        width: 30px;
+        height: 30px;
+    }
+}
